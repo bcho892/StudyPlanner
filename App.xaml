@@ -5,7 +5,18 @@
              StartupUri="MainWindow.xaml">
     <!-- code from https://stackoverflow.com/questions/54988475/xaml-switch-between-textblock-and-textbox-->
     <Application.Resources>
+        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
 
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
+            <Style.Triggers>
+                
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Width" Value="15" />
+                    <Setter Property="MinWidth" Value="15" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
         <DataTemplate DataType="{x:Type local:Task}" >
             <Grid Name="Container">
@@ -72,5 +83,26 @@
 
             </Grid>
         </DataTemplate>
+        <!--Scrollbar Thumbs-->
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                            <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  Background="{TemplateBinding Background}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+
     </Application.Resources>
 </Application>

@@ -3,17 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
         xmlns:local="clr-namespace:StudyPlanner"
         mc:Ignorable="d"
         Background="#5d6b99"
         Title="MainWindow" Height="450" Width="800" BorderBrush="#5d6b99"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
+       
         <Style TargetType="ListBoxItem" x:Key="ListBoxItemStyle">
             <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
-                        <ContentPresenter/>
+          
+                            <ContentPresenter/>
+                      
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -33,21 +38,23 @@
         </Style.Triggers>
     </Style>
     </Window.Resources>
-    <TabControl Padding="0,0,0,0">
-        <TabItem Header="Tasks" Foreground="#40568d" Background="white" Width="90">
+    <TabControl Padding="0,0,0,0" Margin="0,0,0,0" BorderThickness="0" HorizontalContentAlignment="Left" >
+        <TabItem Header="Tasks" Foreground="#40568d" Background="white" Width="90"  >
             <Grid Width="auto" Height="auto" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="17"/>
+                    <ColumnDefinition Width="2.5"/>
                     <ColumnDefinition Width="757*"/>
-                    <ColumnDefinition Width="17"/>
+                    <ColumnDefinition Width="2.5"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     
                     <RowDefinition Height="393*"/>
                     <RowDefinition Height="17"/>
                 </Grid.RowDefinitions>
-                <ListBox Name="tasks" Grid.Row="0" Grid.Column="1" d:ItemsSource="{Binding Source={StaticResource TaskListData}}"
-             IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto"/>
+                <ListBox  Name="tasks" Grid.Row="0" Grid.Column="1" d:ItemsSource="{Binding Source={StaticResource TaskListData}}"
+             IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" 
+                         BorderThickness="0" SelectionMode="Extended"  />
+     
                 <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99"/>
                 <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99"/>
 
@@ -56,15 +63,34 @@
                 <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99"/>
 
             </Grid>
+            
         </TabItem>
-        <TabItem Header="Preferences" Foreground="#40568d" Background="white" Width="90">
-            <Grid Background="#FFE5E5E5">
+        <TabItem Header="Preferences" Foreground="#40568d" Background="white" Width="90"   >
+            <Grid Width="auto" Height="auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5"/>
+                    <ColumnDefinition Width="757*"/>
+                    <ColumnDefinition Width="2.5"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="393*"/>
+                    <RowDefinition Height="17"/>
+                </Grid.RowDefinitions>
                 <Button Content="Button" Click="Button_Click" HorizontalAlignment="Left" Margin="189,148,0,0" VerticalAlignment="Top"/>
+            <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99"/>
+            <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99"/>
+
+            <Border Grid.Row="2" Grid.Column="0" Background="#5d6b99"/>
+            <Border Grid.Row="2" Grid.Column="1" Background="#5d6b99"/>
+            <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99"/>
+
             </Grid>
         </TabItem>
 
     </TabControl>
 
+    
 
 
 </Window>
