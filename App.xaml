@@ -3,7 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:StudyPlanner"
              StartupUri="MainWindow.xaml">
+    <!-- code from https://stackoverflow.com/questions/54988475/xaml-switch-between-textblock-and-textbox-->
     <Application.Resources>
-         
+
+
+        <DataTemplate DataType="{x:Type local:Task}" >
+            <Grid Name="Container">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="1.5"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="1" Grid.Column="0" Background="#5d6b99"/>
+
+                <Grid Name="NameAndUrgency" Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+
+                    </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="86" />
+                    <ColumnDefinition Width="20" />
+
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"
+                                   FontSize="18"
+                                   Name="nameTitle">
+                            Name:
+                </TextBlock>
+                <TextBox Name="Name" Grid.Row="0" Grid.Column="2"
+                                   FontSize="18"                                   
+                                   Text="{Binding Path=name}" />
+
+
+                    <TextBlock Grid.Row="0" Grid.Column="3" Margin="0,0,8,0"
+                                   FontSize="18"
+                                   Name="currentPriorityTitle" >
+                            Urgency:
+                    </TextBlock>
+                    <StackPanel Grid.Row="0" Grid.Column="4" Orientation="Horizontal">
+                        <TextBlock Name="Priority" 
+                                   FontSize="18"
+                                   Text="{Binding Path=priority}" />
+                    </StackPanel>
+                </Grid>
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+                    <TextBlock Margin="20,0,8,0"
+                                   FontSize="18"
+                                   Name="descriptionTitle">
+                            Description:
+                    </TextBlock>
+                    <TextBlock Name="Description" Margin="20,0,8,0" TextWrapping="WrapWithOverflow"
+                                   Text="{Binding Path=description}" />
+
+                </StackPanel>
+                <Button Grid.Column="1" Grid.Row="2" Width="auto" Height="auto"/>
+
+
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 </Application>

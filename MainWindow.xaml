@@ -5,15 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudyPlanner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Background="#5d6b99"
+        Title="MainWindow" Height="450" Width="800" BorderBrush="#5d6b99"  WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="ListBoxItem" x:Key="ListBoxItemStyle">
+            <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <local:TaskList x:Key="TaskListData"/>
+            <Style TargetType="{x:Type TextBox}">
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <TextBlock Text="{TemplateBinding Text}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    </Window.Resources>
+    <TabControl Padding="0,0,0,0">
+        <TabItem Header="Tasks" Foreground="#40568d" Background="white" Width="90">
+            <Grid Width="auto" Height="auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="17"/>
+                    <ColumnDefinition Width="757*"/>
+                    <ColumnDefinition Width="17"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition Height="393*"/>
+                    <RowDefinition Height="17"/>
+                </Grid.RowDefinitions>
+                <ListBox Name="tasks" Grid.Row="0" Grid.Column="1" d:ItemsSource="{Binding Source={StaticResource TaskListData}}"
+             IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto"/>
+                <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99"/>
+                <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99"/>
 
-    <ScrollViewer>
+                <Border Grid.Row="2" Grid.Column="0" Background="#5d6b99"/>
+                <Border Grid.Row="2" Grid.Column="1" Background="#5d6b99"/>
+                <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99"/>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="Preferences" Foreground="#40568d" Background="white" Width="90">
+            <Grid Background="#FFE5E5E5">
+                <Button Content="Button" Click="Button_Click" HorizontalAlignment="Left" Margin="189,148,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </TabItem>
+
+    </TabControl>
 
 
-        <Grid ShowGridLines="True" Height="120">
-            <Button Content="Button" HorizontalAlignment="Left" Margin="24,-131,0,0" VerticalAlignment="Top" Height="55" Width="168" Click="Button_Click"/>
-        </Grid>
 
-
-    </ScrollViewer>
 </Window>

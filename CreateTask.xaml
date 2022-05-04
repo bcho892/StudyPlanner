@@ -6,46 +6,55 @@
         xmlns:local="clr-namespace:StudyPlanner"
         mc:Ignorable="d"
         Title="CreateTask" Height="450" Width="800">
+
+
     <Grid>
-        <Grid x:Name="forms" ShowGridLines="True" Margin="0,0,0,144" Grid.RowSpan="2"/>
-        <Grid Grid.Row="1" Grid.Column="1" ShowGridLines="True">
+        <Grid x:Name="forms"   Margin="0,0,0,144" Grid.RowSpan="2"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="56,4,56,0"  >
             <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="17.001" />
+                <RowDefinition Height="123.012" />
                 <RowDefinition Height="12*" />
-                <RowDefinition Height="22*" />
-                <RowDefinition Height="100*" />
-                <RowDefinition Height="11*" />
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,11,0,0" Grid.RowSpan="2"><Run Language="ja-jp" Text="Name"/></TextBlock>
-            <TextBox Grid.Row="2" TextWrapping="Wrap"  Height="Auto"/>
+            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,3,0,0" Grid.Row="1"><Run Language="ja-jp" Text="Name"/></TextBlock>
+            <TextBox Name="TaskDescription" Grid.Row="2" TextWrapping="Wrap"  Height="117" Margin="0,6,0,0" VerticalAlignment="Top"/>
 
         </Grid>
+        <Grid Grid.Row="0"   Margin="56,0,56,144" Grid.RowSpan="2" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="119" />
+                <ColumnDefinition Width="23" />
+                <ColumnDefinition />
 
-        <Grid Grid.Row="1" Grid.Column="1" ShowGridLines="True" Margin="0,144,0,0" Grid.RowSpan="2">
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="11*" />
-                <RowDefinition Height="22*" />
-                <RowDefinition Height="100*" />
-                <RowDefinition Height="11*" />
-
-
+                <RowDefinition Height="60.011" />
+                <RowDefinition Height="24" />
+                <RowDefinition Height="30.006" />
+                <RowDefinition Height="31.01" />
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,11,0,0" Grid.RowSpan="2"><Run Language="ja-jp" Text="Name"/></TextBlock>
-            <TextBlock Grid.Row="2" TextWrapping="Wrap"  Height="Auto" Width="Auto"/>
-            <TextBox Grid.Row="2" TextWrapping="Wrap"  Height="Auto"/>
+
+            <TextBlock TextWrapping="Wrap" Margin="10,60,2,0" Grid.RowSpan="2"><Run Language="ja-jp" Text="Name"/></TextBlock>
+            <ComboBox Name="TaskPriority" Grid.Column="2" Grid.Row="2" Height="Auto" ItemsSource="{Binding Source={local:EnumBindingSourceExtension {x:Type local:Priority}}}" Margin="2,4,0,0"/>
+            <TextBox Name="TaskName" Grid.Column="2" TextWrapping="Wrap" Height="Auto" Margin="2,60,0,0" Grid.RowSpan="2"/>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" Height="Auto" Width="Auto" Margin="10,4,2,0"/>
 
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1" ShowGridLines="True" Margin="0,0,0,144" Grid.RowSpan="2">
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="56,4,56,0"  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="11*" />
-                <RowDefinition Height="22*" />
-                <RowDefinition Height="100*" />
-                <RowDefinition Height="11*" />
-
-
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="11.001" />
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,11,0,0" Grid.RowSpan="2"><Run Language="ja-jp" Text="Name"/></TextBlock>
-            <TextBox Grid.Row="2" TextWrapping="Wrap" Text="TextBox" Height="Auto"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="279*" />
+                <ColumnDefinition Width="65*" />
 
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="TextBlock" Width="54"/>
+            <Button Grid.Column="1" Content="Button" Margin="0,63,0,10" Grid.Row="1" Width="Auto" Click="Button_Click" VerticalAlignment="Top"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Width="116"/>
         </Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" />
@@ -54,9 +63,9 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="128.012" />
+            <RowDefinition Height="161.015" />
+            <RowDefinition Height="145.013" />
 
 
         </Grid.RowDefinitions>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +19,46 @@ namespace StudyPlanner
     /// <summary>
     /// Interaction logic for CreateTask.xaml
     /// </summary>
+    /// 
+    
     public partial class CreateTask : Window
     {
-        public CreateTask()
+        private TaskList taskList; 
+        public CreateTask(TaskList taskList)
         {
             InitializeComponent();
+            TaskPriority.SelectedIndex = 3;
+            this.taskList = taskList;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            if (TaskName.Text.Replace(" ", "") == "")
+            {
+                return;
+            }
+
+            Priority priority;
+            Enum.TryParse(TaskPriority.Text, out priority);
+            Task currentTask = new Task();
+            currentTask.name = TaskName.Text;
+            currentTask.priority = priority;
+            currentTask.description = TaskDescription.Text;
+
+            System.Diagnostics.Debug.WriteLine(priority);
+
+            using (SQLiteConnection connection = new SQLiteConnection(App.dbPath))
+            {
+                connection.CreateTable<Task>();
+                connection.Insert(currentTask);
+            }
+
+            taskList.addTasks(currentTask);
+            this.Close();
 
         }
     }
