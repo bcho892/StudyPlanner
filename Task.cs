@@ -59,6 +59,11 @@ namespace StudyPlanner
         {
 			Add(task);
         }
+
+		public void removeTask(Task task)
+        {
+			Remove(task);
+        }
     }
 
 	public class Task 

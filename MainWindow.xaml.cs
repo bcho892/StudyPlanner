@@ -28,7 +28,7 @@ namespace StudyPlanner
         {
             InitializeComponent();
             tasks.ItemsSource = taskList;
-            
+
         }
 
 
@@ -37,9 +37,33 @@ namespace StudyPlanner
         {
             CollectionViewSource.GetDefaultView(taskList).Refresh();
             CreateTask createWindow = new CreateTask(taskList);
-            createWindow.Show(); 
+            createWindow.Show();
         }
 
+        private void tasks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void RemoveItem(object sender, RoutedEventArgs e)
+        {
+
+            var button = sender as Button;
+            if (button != null)
+            {
+                var task = button.DataContext as Task;
+
+                using (SQLiteConnection connection = new SQLiteConnection(App.dbPath))
+                {
+                    connection.Execute("DELETE FROM Task WHERE Name = ?", task.name);
+                    connection.Commit();
+
+                }
+
+                taskList.removeTask(task);
+
+            }
+        }
 
     }
 }

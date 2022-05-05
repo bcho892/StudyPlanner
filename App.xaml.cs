@@ -16,5 +16,6 @@ namespace StudyPlanner
         static string dbName = "Tasks.db";
         static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string dbPath = System.IO.Path.Combine(folderPath, dbName);
+
     }
 }
