@@ -8,20 +8,29 @@
         Title="CreateTask" Height="450" Width="800">
 
 
-    <Grid>
-        <Grid x:Name="forms"   Margin="0,0,0,144" Grid.RowSpan="2"/>
-        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="56,4,56,0"  >
+    <Grid >
+        <Border Grid.Row="0" Background="#5d6b99" Padding="0,0,0,0" Grid.ColumnSpan="3" Margin="56,0,56,0">
+            <TextBlock TextWrapping="Wrap" Text="Add Task" 
+                       Margin="20,3,0,0"
+                       FontSize="35"
+                       Foreground="White"
+                       FontFamily="Arial"/>
+
+        </Border>
+
+        <Grid x:Name="forms"   Margin="0,0,0,144" Grid.RowSpan="3"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="56,4,56,0"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*" />
                 <RowDefinition Height="17.001" />
                 <RowDefinition Height="123.012" />
                 <RowDefinition Height="12*" />
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,3,0,0" Grid.Row="1"><Run Language="ja-jp" Text="Name"/></TextBlock>
+            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,3,0,0" Grid.Row="1"><Run Language="ja-jp" Text="Description"/></TextBlock>
             <TextBox Name="TaskDescription" Grid.Row="2" TextWrapping="Wrap"  Height="117" Margin="0,6,0,0" VerticalAlignment="Top"/>
 
         </Grid>
-        <Grid Grid.Row="0"   Margin="56,0,56,144" Grid.RowSpan="2" Grid.ColumnSpan="3">
+        <Grid Grid.Row="0"   Margin="56,0,56,144" Grid.RowSpan="3" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="119" />
                 <ColumnDefinition Width="23" />
@@ -38,24 +47,28 @@
             <TextBlock TextWrapping="Wrap" Margin="10,60,2,0" Grid.RowSpan="2"><Run Language="ja-jp" Text="Name"/></TextBlock>
             <ComboBox Name="TaskPriority" Grid.Column="2" Grid.Row="2" Height="Auto" ItemsSource="{Binding Source={local:EnumBindingSourceExtension {x:Type local:Priority}}}" Margin="2,4,0,0"/>
             <TextBox Name="TaskName" Grid.Column="2" TextWrapping="Wrap" Height="Auto" Margin="2,60,0,0" Grid.RowSpan="2"/>
-            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" Height="Auto" Width="Auto" Margin="10,4,2,0"/>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Urgency" Height="Auto" Width="Auto" Margin="10,4,2,0"/>
 
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="56,4,56,0"  >
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="56,4,56,0" Grid.RowSpan="2"  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*" />
-                <RowDefinition Height="10*" />
+                <RowDefinition Height="9*" />
+                <RowDefinition Height="121*" />
                 <RowDefinition Height="11.001" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="279*" />
-                <ColumnDefinition Width="65*" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="130.044"/>
+                <ColumnDefinition Width="129.811" />
 
             </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="TextBlock" Width="54"/>
-            <Button Grid.Column="1" Content="Button" Margin="0,63,0,10" Grid.Row="1" Width="Auto" Click="Button_Click" VerticalAlignment="Top"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Width="116"/>
+            <Button Grid.Column="2" Content="Cancel" Click="Close" VerticalAlignment="Center" Height="20" Margin="15,0,15,0" Grid.Row="1"/>
+
+            <Button Grid.Column="1" Content="Add" Margin="15,0,15,0" Grid.Row="1" Click="Button_Click" VerticalAlignment="Center" Height="20"/>
+            <Button Content="Set Deadline" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="116" Click="SetDeadline" Height="20" Grid.Row="1"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Enter a name" Name="warning" Visibility="Hidden" VerticalAlignment="Top" Foreground="Red" Height="16" Margin="0,75,0,0"/>
         </Grid>
+        <Border Background="#5d6b99" Grid.Row="3" Grid.Column="1" Margin="0,111,0,0" Grid.RowSpan="2"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" />
             <ColumnDefinition Width="366*" />
@@ -63,9 +76,11 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="128.012" />
+            <RowDefinition Height="47" />
+            <RowDefinition Height="81.012"/>
             <RowDefinition Height="161.015" />
-            <RowDefinition Height="145.013" />
+            <RowDefinition Height="111.013" />
+            <RowDefinition Height="34"/>
 
 
         </Grid.RowDefinitions>

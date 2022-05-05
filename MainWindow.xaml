@@ -9,8 +9,10 @@
         Background="#5d6b99"
         Title="MainWindow" Height="450" Width="800" BorderBrush="#5d6b99"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
+
         <DataTemplate DataType="{x:Type local:Task}" >
-            <Grid Name="Container">
+            <Border Background="#f6f6f6" BorderThickness="1" BorderBrush="#5d6b99" HorizontalAlignment="Stretch" Padding="20,0,0,0">
+            <Grid Name="Container" MinWidth="720">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="1.5"/>
@@ -18,8 +20,10 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="500" />
-                    <ColumnDefinition Width="50" />
-                </Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                     
+
+                    </Grid.ColumnDefinitions>
                 <Border Grid.Row="1" Grid.Column="0" Background="#5d6b99"/>
 
                 <Grid Name="NameAndUrgency" Grid.Row="0" Grid.Column="0">
@@ -69,13 +73,16 @@
                                    Text="{Binding Path=description}" />
 
                 </StackPanel>
-                <Button Grid.Column="1" Grid.Row="2" Width="auto" Height="auto" Click="RemoveItem"/>
+                <Button Content="Remove" Grid.Column="1" Grid.Row="2" Width="120" Height="30" Click="RemoveItem" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
 
 
             </Grid>
+            </Border>
         </DataTemplate>
         <Style TargetType="ListBoxItem" x:Key="ListBoxItemStyle">
-            <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+
+     
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
@@ -118,13 +125,18 @@
                 <ListBox  Name="tasks" Grid.Row="0" Grid.Column="1" d:ItemsSource="{Binding Source={StaticResource TaskListData}}"
              IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" 
                          BorderThickness="0" SelectionMode="Extended" SelectionChanged="tasks_SelectionChanged"  />
-     
-                <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99"/>
-                <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99"/>
 
-                <Border Grid.Row="2" Grid.Column="0" Background="#5d6b99"/>
-                <Border Grid.Row="2" Grid.Column="1" Background="#5d6b99"/>
-                <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99"/>
+                <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99" />
+                <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99" />
+
+                <Border Grid.Row="2" Grid.Column="0" Background="#5d6b99" />
+                <Border Grid.Row="2"  Grid.ColumnSpan="3" Background="#5d6b99" />
+
+
+
+
+                <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99" BorderThickness="0"/>
+                <Button Grid.Row="2" Grid.Column="1" Click="Button_Click" BorderThickness="0" Padding="0,-2,0,0" Background="#5d6b99" Foreground="White" Width="50" Height="12" Content="New" Margin="0,0,30,0" HorizontalAlignment="Right"/>
 
             </Grid>
             
@@ -141,20 +153,22 @@
                     <RowDefinition Height="393*"/>
                     <RowDefinition Height="17"/>
                 </Grid.RowDefinitions>
-                <Button Content="Button" Click="Button_Click" HorizontalAlignment="Left" Margin="189,148,0,0" VerticalAlignment="Top"/>
             <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99"/>
             <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99"/>
 
             <Border Grid.Row="2" Grid.Column="0" Background="#5d6b99"/>
+                
             <Border Grid.Row="2" Grid.Column="1" Background="#5d6b99"/>
-            <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99"/>
+
+                <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99"/>
+                <Button Grid.Row="2" Grid.Column="1" Click="Button_Click" BorderThickness="0" Padding="0,-2,0,0" Background="#5d6b99" Foreground="White" Width="50" Height="12" Content="New" Margin="0,0,30,0" HorizontalAlignment="Right"/>
 
             </Grid>
+            
         </TabItem>
 
     </TabControl>
 
-    
 
 
 </Window>

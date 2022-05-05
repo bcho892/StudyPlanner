@@ -24,6 +24,7 @@ namespace StudyPlanner
     public partial class CreateTask : Window
     {
         private TaskList taskList; 
+        private Task currentTask = new Task();
         public CreateTask(TaskList taskList)
         {
             InitializeComponent();
@@ -39,12 +40,13 @@ namespace StudyPlanner
 
             if (TaskName.Text.Replace(" ", "") == "")
             {
+                warning.Visibility = Visibility.Visible;
                 return;
             }
 
             Priority priority;
             Enum.TryParse(TaskPriority.Text, out priority);
-            Task currentTask = new Task();
+            
             currentTask.name = TaskName.Text;
             currentTask.priority = priority;
             currentTask.description = TaskDescription.Text;
@@ -60,6 +62,17 @@ namespace StudyPlanner
             taskList.addTasks(currentTask);
             this.Close();
 
+        }
+
+        private void SetDeadline(object sender, RoutedEventArgs e)
+        {
+            SetDeadline setDeadline = new SetDeadline(currentTask);
+            setDeadline.Show();
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
