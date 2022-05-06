@@ -2,7 +2,7 @@ name: "Deploy Commands"
 
 on:
 	push:
-		-"class-commands/v*"
+		- "StudyPlanner/v*"
 
 env:
 	PROJECT_PATH: StudyPlanner.csproj
