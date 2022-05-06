@@ -19,19 +19,19 @@
 
         </Border>
 
-        <Grid x:Name="forms"   Margin="0,0,0,144" Grid.RowSpan="3"/>
-        <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="56,4,56,0"  >
+        <Grid x:Name="forms"   Margin="0,0,0,144" Grid.RowSpan="4"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="56,4,56,0" Grid.RowSpan="2"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*" />
                 <RowDefinition Height="17.001" />
                 <RowDefinition Height="123.012" />
                 <RowDefinition Height="12*" />
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Height="Auto" Width="Auto" Margin="10,3,0,0" Grid.Row="1"><Run Language="ja-jp" Text="Description"/></TextBlock>
+            <TextBlock TextWrapping="Wrap" Height="20" Width="Auto" Margin="10,3,0,122" Grid.RowSpan="3"><Run Language="ja-jp" Text="Description"/></TextBlock>
             <TextBox Name="TaskDescription" Grid.Row="2" TextWrapping="Wrap"  Height="117" Margin="0,6,0,0" VerticalAlignment="Top"/>
 
         </Grid>
-        <Grid Grid.Row="0"   Margin="56,0,56,144" Grid.RowSpan="3" Grid.ColumnSpan="3">
+        <Grid Grid.Row="0"   Margin="56,0,56,144" Grid.RowSpan="4" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="119" />
                 <ColumnDefinition Width="23" />
@@ -51,7 +51,7 @@
             <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Urgency" Height="Auto" Width="Auto" Margin="10,4,2,0"/>
 
         </Grid>
-        <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="56,4,56,0" Grid.RowSpan="2"  >
+        <Grid Grid.Row="4" Grid.ColumnSpan="3" Margin="56,4,56,0" Grid.RowSpan="2"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="9*" />
                 <RowDefinition Height="121*" />
@@ -69,7 +69,7 @@
             <Button Content="Set Deadline" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="116" Click="SetDeadline" Height="20" Grid.Row="1"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Enter a name" Name="warning" Visibility="Hidden" VerticalAlignment="Top" Foreground="Red" Height="16" Margin="0,75,0,0"/>
         </Grid>
-        <Border Background="#5d6b99" Grid.Row="3" Grid.Column="1" Margin="0,111,0,0" Grid.RowSpan="2"/>
+        <Border Background="#5d6b99" Grid.Row="4" Margin="56,111,56,0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" />
             <ColumnDefinition Width="366*" />
@@ -79,7 +79,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="47" />
             <RowDefinition Height="81.012"/>
-            <RowDefinition Height="161.015" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="156.015"/>
             <RowDefinition Height="111.013" />
             <RowDefinition Height="34"/>
 
