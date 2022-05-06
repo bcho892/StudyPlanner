@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:StudyPlanner"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StudyPlanner.SetDeadline"
         mc:Ignorable="d"
-        Title="SetDeadline" Height="300" Width="400"
+        Title="Set a Deadline" Height="300" Width="400"
+        
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
@@ -27,7 +28,7 @@
             <syncfusion:DateTimeEdit Name="DeadlineDate" DateTime="1/1/2020" HorizontalAlignment="Left" Height="37" Grid.Row="1" TextWrapping="Wrap" Text="DateTimeEdit" VerticalAlignment="Center" Width="184" Grid.ColumnSpan="3" Margin="108,0,0,0"/>
             <Button Grid.Column="1" Content="Set" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="99.8" Click="Button_Click"/>
             <Button Grid.Column="2" Content="Cancel" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="99.8" Click="closeWindow"/>
-            <CheckBox Grid.Column="1" Content="Today?" HorizontalAlignment="Left" Margin="24,125,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            <TextBlock Name="warning"  Grid.Column="1" FontSize="8" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="3" Visibility="Hidden" TextWrapping="Wrap" Text="Select a Valid Date" Foreground="Red" VerticalAlignment="Top" Grid.RowSpan="2"/>
 
         </Grid>
     </Grid>

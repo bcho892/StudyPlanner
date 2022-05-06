@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        MinWidth="750"
+        MinWidth="400"
         MinHeight="250"
-        MaxWidth="800"
+        MaxWidth="790"
         xmlns:local="clr-namespace:StudyPlanner"
         mc:Ignorable="d"
         Background="#5d6b99"
-        Title="MainWindow" Height="450" Width="800" BorderBrush="#5d6b99"  WindowStartupLocation="CenterScreen">
+        Title="Study Planner" Height="450" Width="800" BorderBrush="#5d6b99"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
         <DataTemplate DataType="{x:Type local:Task}" >
@@ -35,34 +35,34 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="170" />
                             <ColumnDefinition Width="90" />
-                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="140" />
                             <ColumnDefinition Width="20" />
 
                         </Grid.ColumnDefinitions>
 
 
                         <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,8,0"
-                                   FontSize="18"
+                                   FontSize="17"
                                    Name="nameTitle">
                             Name:
                         </TextBlock>
                         <TextBox Name="Name" Grid.Row="0" Grid.Column="2"
-                                   FontSize="18"                                   
+                                   FontSize="17"                                   
                                    Text="{Binding Path=name, Mode=TwoWay, UpdateSourceTrigger=Explicit}" 
                                    TextChanged="Update"/>
 
 
                         <TextBlock Grid.Row="0" Grid.Column="3" Margin="0,0,8,0"
-                                   FontSize="18"
+                                   FontSize="17"
                                    Name="currentPriorityTitle" >
                             Urgency:
                         </TextBlock>
                         <StackPanel Grid.Row="0" Grid.Column="4" Orientation="Horizontal">
                             <TextBlock Name="Priority" 
-                                   FontSize="18"
+                                   FontSize="17"
                                    Text="{Binding Path=priority}" />
                         </StackPanel>
                         <Ellipse Grid.Column="5" Grid.Row="0" Width="15" Height="15" Fill="{Binding Path=correspondingColour}"  VerticalAlignment="center"/>
@@ -70,7 +70,7 @@
                     </Grid>
                     <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
                         <TextBlock Margin="20,0,8,0"
-                                   FontSize="18"
+                                   FontSize="17"
                                    Name="descriptionTitle">
                             Description:
                         </TextBlock>
@@ -134,7 +134,9 @@
                 </Grid.RowDefinitions>
                 <ListBox  Name="tasks" Grid.Row="0" Grid.Column="1" d:ItemsSource="{Binding Source={StaticResource TaskListData}}"
              HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" 
-                     IsSynchronizedWithCurrentItem="True"  BorderThickness="0" SelectionMode="Multiple"  />
+                     IsSynchronizedWithCurrentItem="True"  BorderThickness="0" SelectionMode="Multiple"  >
+                    
+                </ListBox>
 
                 <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99" />
                 <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99" />
@@ -147,7 +149,11 @@
 
                 <Border Grid.Row="2" Grid.Column="2" Background="#5d6b99" BorderThickness="0"/>
                 <Button Grid.Row="2" Grid.Column="1" Click="Button_Click" BorderThickness="0" Padding="0,-2,0,0" Background="#5d6b99" Foreground="White" Width="50" Height="12" Content="New" Margin="0,0,30,0" HorizontalAlignment="Right"/>
+                <StackPanel Name="noitems" Visibility="Collapsed" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock  HorizontalAlignment="Center" FontSize="32" TextWrapping="Wrap" Text="No Tasks" VerticalAlignment="Center"/>
+                    <TextBlock  HorizontalAlignment="Center" FontSize="15" TextWrapping="Wrap" Text="Click 'new' to start adding" VerticalAlignment="Center"/>
 
+                </StackPanel>
             </Grid>
 
         </TabItem>

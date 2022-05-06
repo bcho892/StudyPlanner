@@ -19,16 +19,17 @@ namespace StudyPlanner
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!checkDateValidity(DeadlineDate.DateTime.Value))
+            var time = DeadlineTime.Value.Value.TimeOfDay;
+            if (!checkDateValidity(DeadlineDate.DateTime.Value.Date.Add(time)))
             {
+                warning.Visibility= Visibility.Visible;
                 return;
              
             }
             else
             {
-                var time = DeadlineTime.Value.Value.TimeOfDay;
+                
                 task.deadline = DeadlineDate.DateTime.Value.Date.Add(time).ToString();
-                System.Diagnostics.Debug.WriteLine(task.deadline.ToString());
                 this.Close();
                
             }
