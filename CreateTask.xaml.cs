@@ -68,6 +68,7 @@ namespace StudyPlanner
         {
             SetDeadline setDeadline = new SetDeadline(currentTask);
             setDeadline.Show();
+            
         }
 
         private void Close(object sender, RoutedEventArgs e)

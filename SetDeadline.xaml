@@ -1,11 +1,13 @@
-﻿<Window x:Class="StudyPlanner.SetDeadline"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudyPlanner"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StudyPlanner.SetDeadline"
         mc:Ignorable="d"
         Title="SetDeadline" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
         <Grid>
@@ -13,13 +15,19 @@
                 <RowDefinition Height="17*"/>
                 <RowDefinition Height="202*"/>
                 <RowDefinition Height="19*"/>
-                <RowDefinition Height="46*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
             </Grid.ColumnDefinitions>
-            <DatePicker HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            <syncfusion:SfTimePicker Name="DeadlineTime" AllowNull="True" HorizontalAlignment="Left" Height="35" Margin="108,40,0,0" Grid.Row="1" Value="12:00" VerticalAlignment="Top"  Watermark="Pick a time" Width="184" Grid.ColumnSpan="3"/>
+            <syncfusion:DateTimeEdit Name="DeadlineDate" DateTime="1/1/2020" HorizontalAlignment="Left" Height="37" Grid.Row="1" TextWrapping="Wrap" Text="DateTimeEdit" VerticalAlignment="Center" Width="184" Grid.ColumnSpan="3" Margin="108,0,0,0"/>
+            <Button Grid.Column="1" Content="Set" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="99.8" Click="Button_Click"/>
+            <Button Grid.Column="2" Content="Cancel" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="99.8" Click="closeWindow"/>
+            <CheckBox Grid.Column="1" Content="Today?" HorizontalAlignment="Left" Margin="24,125,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>

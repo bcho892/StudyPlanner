@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
@@ -19,8 +20,12 @@ namespace StudyPlanner
 		TRIVIAL
 	}
 
-	public class TaskList : ObservableCollection<Task>
-	{	
+
+
+	public class TaskList : BindingList<Task>
+	{
+
+
 
 		public TaskList() : base()
         {
@@ -32,12 +37,12 @@ namespace StudyPlanner
 				{
 					foreach (var task in data)
 					{
-						System.Diagnostics.Debug.WriteLine("Stock: " + task.name);
 						Task current = new Task
 						{
 							name = task.name,
 							description = task.description,
-							priority = task.priority
+							priority = task.priority,
+							deadline = task.deadline
 						};
 
 						System.Diagnostics.Debug.WriteLine("Stock: " + current.priority);
@@ -46,7 +51,7 @@ namespace StudyPlanner
 						Add(current);
 
 					}
-				}catch(SQLite.SQLiteException e)
+				}catch(SQLite.SQLiteException)
                 {
 
 					Debug.WriteLine("No db file found!");
@@ -64,10 +69,13 @@ namespace StudyPlanner
         {
 			Remove(task);
         }
+
+		
     }
 
-	public class Task 
+	public class Task : INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler? PropertyChanged;
 
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
@@ -79,7 +87,30 @@ namespace StudyPlanner
 		public String description { get; set; }
 
 		[Column("Priority")]
-		public Priority priority { get; set;}
+		public Priority priority { get; set; }
+
+		[Column("Deadline")]
+		public String deadline { get; set; }
+
+		private String formattedDeadlineValue;
+		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		public String formattedDeadline { get
+			{
+				return this.formattedDeadlineValue;
+			}
+			set
+			{
+				if (value != this.formattedDeadlineValue)
+				{
+					this.formattedDeadlineValue = value;
+					NotifyPropertyChanged();
+				}
+			}
+		}
 
 
 

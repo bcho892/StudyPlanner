@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-
+        
         xmlns:local="clr-namespace:StudyPlanner"
         mc:Ignorable="d"
         Background="#5d6b99"
@@ -49,7 +49,8 @@
                     </TextBlock>
                     <TextBox Name="Name" Grid.Row="0" Grid.Column="2"
                                    FontSize="18"                                   
-                                   Text="{Binding Path=name}" />
+                                   Text="{Binding Path=name, Mode=TwoWay, UpdateSourceTrigger=Explicit}" 
+                                   TextChanged="Update"/>
 
 
                     <TextBlock Grid.Row="0" Grid.Column="3" Margin="0,0,8,0"
@@ -69,11 +70,16 @@
                                    Name="descriptionTitle">
                             Description:
                     </TextBlock>
-                    <TextBlock Name="Description" Margin="20,0,8,0" TextWrapping="WrapWithOverflow"
-                                   Text="{Binding Path=description}" />
+                    <TextBox Name="Description" FontSize="14" Margin="20,0,8,0" TextWrapping="WrapWithOverflow"
+                                   Text="{Binding Path=description}" 
+                                        TextChanged="Update"/>
 
                 </StackPanel>
-                <Button Content="Remove" Grid.Column="1" Grid.Row="2" Width="120" Height="30" Click="RemoveItem" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                    <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center">
+                    <Label HorizontalAlignment="Center" Content="Time until Deadline:" />
+                        <TextBlock Name="deadlineCounter" Text="{Binding Path=formattedDeadline, Mode=TwoWay}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <Button Content="Remove" Grid.Column="1" Grid.Row="2" Width="120" Height="30" Click="RemoveItem" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,30,0,0"/>
 
 
             </Grid>
@@ -120,16 +126,16 @@
                 <Grid.RowDefinitions>
                     
                     <RowDefinition Height="393*"/>
-                    <RowDefinition Height="17"/>
+                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 <ListBox  Name="tasks" Grid.Row="0" Grid.Column="1" d:ItemsSource="{Binding Source={StaticResource TaskListData}}"
-             IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" 
-                         BorderThickness="0" SelectionMode="Extended" SelectionChanged="tasks_SelectionChanged"  />
+             HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" 
+                     IsSynchronizedWithCurrentItem="True"  BorderThickness="0" SelectionMode="Multiple"  />
 
                 <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99" />
                 <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99" />
 
-                <Border Grid.Row="2" Grid.Column="0" Background="#5d6b99" />
+                <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Background="#5d6b99" />
                 <Border Grid.Row="2"  Grid.ColumnSpan="3" Background="#5d6b99" />
 
 
@@ -151,7 +157,7 @@
                 <Grid.RowDefinitions>
 
                     <RowDefinition Height="393*"/>
-                    <RowDefinition Height="17"/>
+                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
             <Border Grid.Row="0" Grid.Column="0" Background="#5d6b99"/>
             <Border Grid.Row="0" Grid.Column="2" Background="#5d6b99"/>

@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StudyPlanner
 {
@@ -20,10 +9,40 @@ namespace StudyPlanner
     public partial class SetDeadline : Window
     {
         private Task task;
+        
         public SetDeadline(Task task)
         {
+            this.task = task;
             InitializeComponent();
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!checkDateValidity(DeadlineDate.DateTime.Value))
+            {
+                return;
+             
+            }
+            else
+            {
+                var time = DeadlineTime.Value.Value.TimeOfDay;
+                task.deadline = DeadlineDate.DateTime.Value.Date.Add(time).ToString();
+                System.Diagnostics.Debug.WriteLine(task.deadline.ToString());
+                this.Close();
+               
+            }
+            
+        }
+
+        private Boolean checkDateValidity(DateTime givenDateTime)
+        {
+            return givenDateTime.CompareTo(DateTime.Now) < 0 ? false : true;
+        }
+
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -5,6 +5,7 @@
              StartupUri="MainWindow.xaml">
     <!-- code from https://stackoverflow.com/questions/54988475/xaml-switch-between-textblock-and-textbox-->
     <Application.Resources>
+        <local:ToRemainingTime x:Key="deadlineConvert"/>
 
         <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
 
