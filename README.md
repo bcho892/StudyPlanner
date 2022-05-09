@@ -19,6 +19,9 @@ WPF project which allows a user to add tasks that can include:
 ![2022-05-07](https://user-images.githubusercontent.com/100653148/167234681-e60c43e1-7252-4038-bed7-27648f83a6c3.png)
 > UI showing tasks, option to "remove" when done
 ---
+![edit](https://user-images.githubusercontent.com/100653148/167403595-bdccdc98-bbad-47d5-84df-6c78a1182a1c.png)
+>Users may edit name or description as needed
+---
 ![Sorting](https://user-images.githubusercontent.com/100653148/167234694-0403e0ae-d6f4-4ee6-884e-87b8108461e9.png)
 > Options for sorting the tasks (Default is "Descending", reverse can be used to switch to "Ascending")
 ---
