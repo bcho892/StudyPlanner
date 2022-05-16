@@ -22,7 +22,7 @@ WPF project which allows a user to add tasks that can include:
 ![edit](https://user-images.githubusercontent.com/100653148/167403595-bdccdc98-bbad-47d5-84df-6c78a1182a1c.png)
 >Users may edit name or description as needed
 ---
-![Sorting](https://user-images.githubusercontent.com/100653148/167234694-0403e0ae-d6f4-4ee6-884e-87b8108461e9.png)
+![Sorting](https://user-images.githubusercontent.com/100653148/168509939-a93ee047-d3a1-4d73-ac89-2f50e6ce0afc.png)
 > Options for sorting the tasks (Default is "Descending", reverse can be used to switch to "Ascending")
 ---
 ![addtask](https://user-images.githubusercontent.com/100653148/167234725-b515f663-01a6-437c-8cc4-180469616c90.png)
